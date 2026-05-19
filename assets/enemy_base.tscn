@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://vxuwvogq6knv"]
+
+[ext_resource type="Script" uid="uid://c2qx83ar44p3p" path="res://assets/enemy_base.gd" id="1_dg2mr"]
+[ext_resource type="PackedScene" uid="uid://b3mb2s6d7fc1f" path="res://assets/wild west guy base.glb" id="1_gy1qu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dg2mr"]
+radius = 2.3100586
+height = 5.836731
+
+[node name="EnemyBase" type="CharacterBody3D" unique_id=338761813]
+script = ExtResource("1_dg2mr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=652236175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8371887, 0)
+shape = SubResource("CapsuleShape3D_dg2mr")
+
+[node name="EnemyModel" parent="." unique_id=1133929738 instance=ExtResource("1_gy1qu")]

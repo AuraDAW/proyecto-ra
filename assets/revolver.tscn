@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://o35bf1h13twm"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_neexw"]
+[ext_resource type="PackedScene" uid="uid://enska5xapmao" path="res://assets/revolver.glb" id="2_4vcex"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ucq1"]
+size = Vector3(0.18530273, 0.15209961, 0.37316895)
+
+[node name="Revolver" unique_id=490509155 instance=ExtResource("1_neexw")]
+ranged_grab_method = 2
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0032958984, -0.0052490234, -0.09454346)
+shape = SubResource("BoxShape3D_8ucq1")
+
+[node name="revolver" parent="." index="1" unique_id=1471612324 instance=ExtResource("2_4vcex")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="2" unique_id=2112078665]
+target_position = Vector3(0, 0, -1)

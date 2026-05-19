@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bux8lrlvs2ubq"]
+
+[ext_resource type="Script" uid="uid://csi82c158wqlx" path="res://assets/main_scene.gd" id="1_ob7y1"]
+[ext_resource type="PackedScene" uid="uid://vxuwvogq6knv" path="res://assets/enemy_base.tscn" id="2_dgcbm"]
+[ext_resource type="PackedScene" uid="uid://cp8ywsrd2lm2u" path="res://assets/player.tscn" id="2_ivrm4"]
+[ext_resource type="Material" uid="uid://cl2xmm3ab6idd" path="res://assets/Materials/body_blue.tres" id="3_dgcbm"]
+[ext_resource type="Material" uid="uid://be3ce7j2s8ycb" path="res://assets/Materials/body_brown.tres" id="4_phs4n"]
+[ext_resource type="Material" uid="uid://bgipvaydj8rnu" path="res://assets/Materials/body_cyan.tres" id="5_wf3gi"]
+[ext_resource type="Material" uid="uid://orcsmju7gktl" path="res://assets/Materials/body_green.tres" id="6_oyijj"]
+[ext_resource type="Material" uid="uid://b88swa8eyqsv" path="res://assets/Materials/body_orange.tres" id="7_2tgfh"]
+[ext_resource type="Material" uid="uid://dydv7peikfqpf" path="res://assets/Materials/body_red.tres" id="8_tbkod"]
+[ext_resource type="Material" uid="uid://di4eia7gcje4p" path="res://assets/Materials/head_black.tres" id="9_bvw2t"]
+[ext_resource type="Material" uid="uid://dbcxovc5jcuen" path="res://assets/Materials/head_pale.tres" id="10_yqhe7"]
+[ext_resource type="Material" uid="uid://dx0xd3opli17r" path="res://assets/Materials/head_tanned.tres" id="11_36io6"]
+[ext_resource type="PackedScene" uid="uid://o35bf1h13twm" path="res://assets/revolver.tscn" id="13_dgcbm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dgcbm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_phs4n"]
+sky_material = SubResource("ProceduralSkyMaterial_dgcbm")
+
+[sub_resource type="Environment" id="Environment_wf3gi"]
+background_mode = 2
+sky = SubResource("Sky_phs4n")
+tonemap_mode = 2
+
+[node name="MainScene" type="Node3D" unique_id=1263793538]
+script = ExtResource("1_ob7y1")
+npc_scene = ExtResource("2_dgcbm")
+body_materials = Array[Material]([ExtResource("3_dgcbm"), ExtResource("4_phs4n"), ExtResource("5_wf3gi"), ExtResource("6_oyijj"), ExtResource("7_2tgfh"), ExtResource("8_tbkod")])
+head_materials = Array[Material]([ExtResource("9_bvw2t"), ExtResource("10_yqhe7"), ExtResource("11_36io6")])
+hat_materials = Array[Material]([ExtResource("3_dgcbm"), ExtResource("4_phs4n"), ExtResource("5_wf3gi"), ExtResource("6_oyijj"), ExtResource("7_2tgfh"), ExtResource("8_tbkod")])
+hatband_materials = Array[Material]([ExtResource("3_dgcbm"), ExtResource("4_phs4n"), ExtResource("5_wf3gi"), ExtResource("6_oyijj"), ExtResource("7_2tgfh"), ExtResource("8_tbkod")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2138121733]
+environment = SubResource("Environment_wf3gi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1248601281]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=853764210 instance=ExtResource("2_ivrm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.105)
+
+[node name="Revolver" parent="." unique_id=490509155 instance=ExtResource("13_dgcbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2286854e-05, -0.10840523, 0.5280411)
+freeze = true
+
+[node name="Enemies" type="Node3D" parent="." unique_id=1114217884]
