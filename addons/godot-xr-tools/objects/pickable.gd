@@ -133,25 +133,8 @@ func _process(_delta):
 	# Must be held
 	if not is_picked_up():
 		return
-
-	# Must be right hand
-	if not is_right_hand():
-		return
-
-	# Must press trigger
-	if not is_primary_pressed():
-		return
-
-	shoot()
-
-func is_right_hand() -> bool:
-	var controller := get_picked_up_by_controller()
-
-	if controller == null:
-		return false
-
-	# BEST PRACTICE: use group
-	return controller.is_in_group("right_hand")
+	if is_primary_pressed():
+		shoot()
 func is_primary_pressed() -> bool:
 	var controller := get_picked_up_by_controller()
 
@@ -160,7 +143,7 @@ func is_primary_pressed() -> bool:
 
 	# XRTools / OpenXR Vendors input
 	if controller.has_method("get_input"):
-		return controller.get_input("primary_click")
+		return controller.get_input("ax_button")
 
 	return false
 # Called when the node exits the tree
